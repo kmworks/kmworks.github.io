@@ -10,9 +10,34 @@
     />
     <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
     <link rel="stylesheet" href="css/styles.css" />
-    <meta name="theme-color" content="#0a0a0c" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f8" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0a0c" />
+    <script>
+      (function () {
+        var stored = null;
+        try { stored = localStorage.getItem('theme'); } catch (e) {}
+        var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
   </head>
   <body>
+    <button class="theme-toggle" id="theme-toggle" type="button">Dark</button>
+    <script>
+      (function () {
+        var btn = document.getElementById('theme-toggle');
+        function sync() {
+          btn.textContent = document.documentElement.dataset.theme === 'dark' ? 'Light' : 'Dark';
+        }
+        btn.addEventListener('click', function () {
+          var next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+          document.documentElement.dataset.theme = next;
+          try { localStorage.setItem('theme', next); } catch (e) {}
+          sync();
+        });
+        sync();
+      })();
+    </script>
     <header class="hero">
       <img class="glyph" src="assets/logo.svg" alt="kmworks logo" />
       <p class="eyebrow">Komga-compatible, end to end</p>
