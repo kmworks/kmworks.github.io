@@ -1,0 +1,194 @@
+@font-face {
+  font-family: 'Geist Variable';
+  src: url('../assets/fonts/geist-latin-wght-normal.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Variable';
+  src: url('../assets/fonts/geist-latin-wght-italic.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Mono Variable';
+  src: url('../assets/fonts/geist-mono-latin-wght-normal.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg: #0a0a0c;
+  --surface: #121216;
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #f4f4f5;
+  --muted: #a1a1aa;
+  --accent: #ffb340;
+  --rose: #ff3d68;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Geist Variable', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text);
+  background:
+    radial-gradient(52rem 30rem at 78% 12%, rgba(255, 179, 64, 0.12), transparent 62%),
+    radial-gradient(38rem 26rem at 12% 88%, rgba(255, 61, 104, 0.06), transparent 60%),
+    var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* hero */
+
+.hero {
+  text-align: center;
+  padding: clamp(4rem, 12vh, 8rem) 1.5rem 3.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.glyph {
+  width: 96px;
+  height: 96px;
+  margin-bottom: 1.6rem;
+}
+
+.eyebrow {
+  font-family: 'Geist Mono Variable', ui-monospace, monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 1.1rem;
+}
+
+h1 {
+  font-family: 'Geist Mono Variable', ui-monospace, monospace;
+  font-size: clamp(2.8rem, 7vw, 4.6rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin: 0 0 1.1rem;
+  background: linear-gradient(155deg, #ffb340 30%, #ff3d68 85%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.sub {
+  max-width: 32rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+/* project cards */
+
+.projects {
+  width: min(1020px, 92vw);
+  margin: 0 auto;
+  padding: 1rem 0 4rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.7rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  text-decoration: none;
+  color: var(--text);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 179, 64, 0.4);
+}
+
+.role {
+  font-family: 'Geist Mono Variable', ui-monospace, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.7rem;
+}
+
+.card h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.6rem;
+}
+
+.desc {
+  color: var(--muted);
+  font-size: 0.94rem;
+  margin: 0 0 1.4rem;
+  flex: 1;
+}
+
+.link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.link i {
+  font-style: normal;
+  display: inline-block;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover .link i {
+  transform: translateX(3px);
+}
+
+/* footer */
+
+.footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 2rem 1.5rem 2.5rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 860px) {
+  .projects {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
